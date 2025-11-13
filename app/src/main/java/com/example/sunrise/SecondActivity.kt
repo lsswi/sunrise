@@ -1,6 +1,5 @@
 package com.example.sunrise
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -13,85 +12,64 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 
-class MainActivity : ComponentActivity() {
-    private val TAG = "MainActivity-Lifecycle"
+class SecondActivity : ComponentActivity() {
+    private val TAG = "SecondActivity-Lifecycle"
 
-    // 生命周期方法：Activity 首次创建时调用
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate: 首次创建")
 
         setContent {
-            MainScreen {
-                // 点击按钮跳转到 SecondActivity
-                val intent = Intent(this, SecondActivity::class.java)
-                startActivity(intent)
+            SecondScreen {
+                // 点击按钮关闭当前 Activity（返回 MainActivity）
+                finish()
             }
         }
     }
 
-    // 生命周期方法：Activity 可见但未交互时调用
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStart: 开始可见")
     }
 
-    // 生命周期方法：Activity 可见且可交互时调用
     override fun onResume() {
         super.onResume()
         Log.d(TAG, "onResume: 可交互")
     }
 
-    // 生命周期方法：被其他 Activity 遮挡时调用（部分可见）
     override fun onPause() {
         super.onPause()
         Log.d(TAG, "onPause: 失去焦点")
     }
 
-    // 生命周期方法：完全不可见时调用
     override fun onStop() {
         super.onStop()
         Log.d(TAG, "onStop: 完全不可见")
     }
 
-    // 生命周期方法：从停止状态恢复时调用（先于 onResume）
     override fun onRestart() {
         super.onRestart()
         Log.d(TAG, "onRestart: 从停止状态恢复")
     }
 
-    // 生命周期方法：Activity 销毁时调用
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, "onDestroy: 销毁")
     }
-
-    // 保存状态（如屏幕旋转时）
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        Log.d(TAG, "onSaveInstanceState: 保存状态")
-    }
 }
 
-// MainActivity 的界面
+// SecondActivity 的界面
 @Composable
-fun MainScreen(onNavigate: () -> Unit) {
+fun SecondScreen(onFinish: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("这是第一个 Activity")
-        Button(onClick = onNavigate) {
-            Text("跳转到第二个 Activity")
+        Text("这是第二个 Activity")
+        Button(onClick = onFinish) {
+            Text("返回第一个 Activity")
         }
     }
-}
-
-@Preview
-@Composable
-fun MainScreenPreview() {
-    MainScreen {}
 }

@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    package="com.example.sunrise">  <!-- 应用包名 -->
 
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Sunrise">
+        android:theme="@style/Theme.Sunrise">  <!-- 应用默认主题 -->
+
+        <!-- 主 Activity（应用入口） -->
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Sunrise">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true">
 
-                <category android:name="android.intent.category.LAUNCHER" />
+            <!--  Intent 过滤器：声明为应用入口（ launcher ） -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />  <!-- 主入口标识 -->
+                <category android:name="android.intent.category.LAUNCHER" />  <!-- 显示在 launcher 中 -->
             </intent-filter>
         </activity>
-    </application>
 
+        <!-- 第二个 Activity -->
+        <activity
+            android:name=".SecondActivity"
+            android:exported="false" />
+    </application>
 </manifest>
