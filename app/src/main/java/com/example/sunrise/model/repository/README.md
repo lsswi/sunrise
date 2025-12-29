@@ -1,0 +1,1 @@
+仓库层：统一数据入口（ViewModel仅与repository交互）

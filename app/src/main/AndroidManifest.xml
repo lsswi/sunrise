@@ -14,8 +14,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
-            <!--  Intent 过滤器：声明为应用入口（ launcher ） -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />  <!-- 主入口标识 -->
                 <category android:name="android.intent.category.LAUNCHER" />  <!-- 显示在 launcher 中 -->

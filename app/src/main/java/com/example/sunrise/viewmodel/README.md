@@ -1,0 +1,1 @@
+ViewModel层：状态管理层，使用StateFlow连接Model和View
